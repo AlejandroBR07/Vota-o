@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote no seu Trader Favorito</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Widget com isolamento extremo -->
+    <div id="trader-voting-widget-root" style="all: initial !important; display: block !important; position: relative !important; width: 100% !important; font-family: 'Inter', sans-serif !important; font-size: 16px !important; line-height: 1.5 !important; color: #f8fafc !important; background: transparent !important; margin: 0 !important; padding: 0 !important; border: none !important; box-sizing: border-box !important;">
+        <style>
+            /* Isolamento total com seletores ultra-específicos */
+            #trader-voting-widget-root,
+            #trader-voting-widget-root *,
+            #trader-voting-widget-root *::before,
+            #trader-voting-widget-root *::after {
+                all: unset !important;
+                display: revert !important;
+                box-sizing: border-box !important;
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            }
+
+            /* Container principal */
+            #trader-voting-widget-root .tvw-container {
+                width: 100% !important;
+                max-width: 1400px !important;
+                margin: 0 auto !important;
+                padding: 32px 24px !important;
+                background: transparent !important;
+                position: relative !important;
+                z-index: 1 !important;
+            }
+
+            /* Header principal melhorado */
+            #trader-voting-widget-root .tvw-header {
+                text-align: center !important;
+                margin-bottom: 64px !important;
+                padding: 0 !important;
+                position: relative !important;
+            }
+
+            #trader-voting-widget-root .tvw-main-icon {
+                font-size: 40px !important;
+                color: #d4af37 !important;
+                margin-bottom: 24px !important;
+                display: block !important;
+                opacity: 0.9 !important;
+                text-shadow: 0 0 15px rgba(212, 175, 55, 0.4) !important;
+                animation: main-icon-glow 3s ease-in-out infinite alternate !important;
+            }
+
+            @keyframes main-icon-glow {
+                0% {
+                    text-shadow: 0 0 15px rgba(212, 175, 55, 0.4) !important;
+                }
+                100% {
+                    text-shadow: 0 0 20px rgba(212, 175, 55, 0.6) !important;
+                }
+            }
+
+            /* Tipografia principal refinada */
+            #trader-voting-widget-root .tvw-title-main {
+                font-size: clamp(36px, 5vw, 56px) !important;
+                font-weight: 900 !important;
+                text-align: center !important;
+                margin: 0 0 16px 0 !important;
+                padding: 0 !important;
+                letter-spacing: -1.5px !important;
+                line-height: 1.1 !important;
+                color: #f1f5f9 !important;
+                text-transform: uppercase !important;
+                display: block !important;
+            }
+
+            #trader-voting-widget-root .tvw-title-gold {
+                color: #d4af37 !important;
+                background: linear-gradient(135deg, #d4af37, #f4d03f) !important;
+                -webkit-background-clip: text !important;
+                -webkit-text-fill-color: transparent !important;
+                background-clip: text !important;
+                text-shadow: none !important;
+                display: block !important;
+                position: relative !important;
+            }
+
+            #trader-voting-widget-root .tvw-subtitle {
+                font-size: 18px !important;
+                color: #94a3b8 !important;
+                text-align: center !important;
+                margin: 0 auto 32px auto !important;
+                padding: 0 !important;
+                font-weight: 500 !important;
+                line-height: 1.6 !important;
+                max-width: 600px !important;
+                display: block !important;
+            }
+
+            /* Decorador refinado */
+            #trader-voting-widget-root .tvw-decorator {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 16px !important;
+                margin: 24px 0 0 0 !important;
+                padding: 0 !important;
+            }
+
+            #trader-voting-widget-root .tvw-decorator-line {
+                height: 2px !important;
+                width: 48px !important;
+                background: linear-gradient(to right, transparent, #d4af37, transparent) !important;
+                border-radius: 2px !important;
+                display: block !important;
+                opacity: 0.6 !important;
+            }
+
+            #trader-voting-widget-root .tvw-decorator-icon {
+                color: #d4af37 !important;
+                font-size: 16px !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                opacity: 0.8 !important;
+            }
+
+            /* Seções melhoradas */
+            #trader-voting-widget-root .tvw-section {
+                margin-bottom: 80px !important;
+            }
+
+            #trader-voting-widget-root .tvw-section-title-container {
+                text-align: center !important;
+                margin-bottom: 48px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 8px !important;
+            }
+
+            #trader-voting-widget-root .tvw-section-top-icon {
+                color: #d4af37 !important;
+                font-size: 24px !important;
+                margin-bottom: 12px !important;
+                opacity: 0.8 !important;
+            }
+
+            #trader-voting-widget-root .tvw-section-title {
+                font-size: clamp(28px, 4vw, 42px) !important;
+                font-weight: 900 !important;
+                text-align: center !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                letter-spacing: 1.5px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 20px !important;
+                color: #d4af37 !important;
+                text-transform: uppercase !important;
+            }
+
+            #trader-voting-widget-root .tvw-section-icon {
+                font-size: 28px !important;
+                color: #d4af37 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                opacity: 0.9 !important;
+            }
+
+            #trader-voting-widget-root .tvw-section-subtitle {
+                font-size: 16px !important;
+                color: #64748b !important;
+                text-align: center !important;
+                margin: 8px 0 0 0 !important;
+                padding: 0 !important;
+                font-weight: 500 !important;
+                display: block !important;
+                letter-spacing: 0.5px !important;
+            }
+
+            /* Grid layout melhorado */
+            #trader-voting-widget-root .tvw-grid {
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 28px !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                width: 100% !important;
+                justify-items: center !important;
+            }
+
+            /* Cards refinados */
+            #trader-voting-widget-root .tvw-card {
+                background: rgba(0, 0, 0, 0.85) !important;
+                backdrop-filter: blur(15px) !important;
+                -webkit-backdrop-filter: blur(15px) !important;
+                border: 2px solid #d4af37 !important;
+                border-radius: 16px !important;
+                padding: 24px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                text-align: center !important;
+                min-height: 290px !important;
+                max-width: 320px !important;
+                width: 100% !important;
+                position: relative !important;
+                overflow: hidden !important;
+                transition: all 0.3s ease !important;
+                cursor: default !important;
+                margin: 0 !important;
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.3) !important;
+            }
+
+            #trader-voting-widget-root .tvw-card::before {
+                content: '' !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                background: linear-gradient(135deg, rgba(212, 175, 55, 0.03), transparent) !important;
+                pointer-events: none !important;
+                z-index: 1 !important;
+            }
+
+            #trader-voting-widget-root .tvw-card:hover {
+                transform: translateY(-8px) scale(1.02) !important;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 175, 55, 0.4) !important;
+                border-color: #f4d03f !important;
+            }
+
+            /* Cards Premium do Camarote */
+            #trader-voting-widget-root #camarote .tvw-card {
+                background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(30, 30, 30, 0.95)) !important;
+                border: 2px solid #d4af37 !important;
+                box-shadow: 
+                    0 0 30px rgba(212, 175, 55, 0.4),
+                    0 0 60px rgba(212, 175, 55, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+                animation: camarote-glow 3s ease-in-out infinite alternate !important;
+            }
+
+            #trader-voting-widget-root #camarote .tvw-card:hover {
+                transform: translateY(-12px) scale(1.05) !important;
+                box-shadow: 
+                    0 20px 40px rgba(0, 0, 0, 0.6),
+                    0 0 40px rgba(212, 175, 55, 0.6),
+                    0 0 80px rgba(212, 175, 55, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+                border-color: #f4d03f !important;
+            }
+
+            @keyframes camarote-glow {
+                0% {
+                    box-shadow: 
+                        0 0 30px rgba(212, 175, 55, 0.4),
+                        0 0 60px rgba(212, 175, 55, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+                }
+                100% {
+                    box-shadow: 
+                        0 0 40px rgba(212, 175, 55, 0.6),
+                        0 0 80px rgba(212, 175, 55, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+                }
+            }
+
+            /* Card content */
+            #trader-voting-widget-root .tvw-card-content {
+                position: relative !important;
+                z-index: 2 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                flex-grow: 1 !important;
+            }
+
+            /* Avatar melhorado */
+            #trader-voting-widget-root .tvw-initials-circle {
+                width: 100px !important;
+                height: 100px !important;
+                border-radius: 50% !important;
+                background: linear-gradient(135deg, #1e293b, #334155) !important;
+                border: 3px solid rgba(212, 175, 55, 0.6) !important;
+                color: #f1f5f9 !important;
+                font-size: 34px !important;
+                font-weight: 800 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                margin: 0 0 20px 0 !important;
+                padding: 0 !important;
+                text-transform: uppercase !important;
+                box-shadow: 
+                    0 8px 20px rgba(0, 0, 0, 0.15),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+                position: relative !important;
+            }
+
+            #trader-voting-widget-root .tvw-initials-circle::before {
+                content: '' !important;
+                position: absolute !important;
+                inset: -2px !important;
+                border-radius: 50% !important;
+                background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), transparent) !important;
+                z-index: -1 !important;
+            }
+
+            /* Nomes e informações refinados */
+            #trader-voting-widget-root .tvw-name {
+                font-size: 20px !important;
+                font-weight: 700 !important;
+                color: #f1f5f9 !important;
+                margin: 0 0 12px 0 !important;
+                padding: 0 !important;
+                line-height: 1.3 !important;
+                display: block !important;
+                text-align: center !important;
+                letter-spacing: 0.5px !important;
+            }
+
+            #trader-voting-widget-root .tvw-info {
+                font-size: 14px !important;
+                color: #94a3b8 !important;
+                margin: 0 0 16px 0 !important;
+                padding: 0 !important;
+                font-weight: 500 !important;
+                display: block !important;
+                text-align: center !important;
+                line-height: 1.5 !important;
+                letter-spacing: 0.3px !important;
+            }
+
+            /* Badges melhorados */
+            #trader-voting-widget-root .tvw-badge-container {
+                display: flex !important;
+                justify-content: center !important;
+                margin-bottom: 24px !important;
+            }
+
+            #trader-voting-widget-root .tvw-badge {
+                padding: 6px 16px !important;
+                font-size: 11px !important;
+                font-weight: 700 !important;
+                color: white !important;
+                border-radius: 24px !important;
+                text-transform: uppercase !important;
+                margin: 0 !important;
+                border: none !important;
+                line-height: 1 !important;
+                letter-spacing: 0.8px !important;
+                position: relative !important;
+                overflow: hidden !important;
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15) !important;
+            }
+
+            #trader-voting-widget-root .tvw-badge-latam {
+                background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+                box-shadow: 0 2px 12px rgba(59, 130, 246, 0.3) !important;
+            }
+
+            #trader-voting-widget-root .tvw-badge-tribo {
+                background: linear-gradient(135deg, #6b7280, #374151) !important;
+                box-shadow: 0 2px 12px rgba(107, 114, 128, 0.3) !important;
+            }
+
+            #trader-voting-widget-root .tvw-badge-aldeia {
+                background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+                box-shadow: 0 2px 12px rgba(34, 197, 94, 0.3) !important;
+            }
+
+            /* Botão de votação melhorado */
+            #trader-voting-widget-root .tvw-vote-btn {
+                width: 100% !important;
+                padding: 14px 20px !important;
+                border-radius: 12px !important;
+                font-weight: 700 !important;
+                font-size: 14px !important;
+                text-transform: uppercase !important;
+                letter-spacing: 1px !important;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                position: relative !important;
+                overflow: hidden !important;
+                cursor: pointer !important;
+                border: none !important;
+                outline: none !important;
+                margin-top: auto !important;
+                display: block !important;
+                text-align: center !important;
+                line-height: 1 !important;
+                background: linear-gradient(135deg, #d97706, #ea580c) !important;
+                color: #ffffff !important;
+                box-shadow: 
+                    0 4px 16px rgba(217, 119, 6, 0.25),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+                z-index: 2 !important;
+            }
+
+            #trader-voting-widget-root .tvw-vote-btn::before {
+                content: '' !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: -100% !important;
+                width: 100% !important;
+                height: 100% !important;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+                transition: left 0.6s !important;
+                z-index: 1 !important;
+            }
+
+            #trader-voting-widget-root .tvw-vote-btn:hover {
+                background: linear-gradient(135deg, #ea580c, #dc2626) !important;
+                transform: translateY(-2px) !important;
+                box-shadow: 
+                    0 8px 24px rgba(217, 119, 6, 0.4),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+            }
+
+            #trader-voting-widget-root .tvw-vote-btn:hover::before {
+                left: 100% !important;
+            }
+
+            /* Icons */
+            #trader-voting-widget-root .tvw-icon {
+                margin-right: 8px !important;
+                display: inline !important;
+                font-size: 13px !important;
+            }
+
+            /* Section divider melhorado */
+            #trader-voting-widget-root .tvw-divider {
+                background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent) !important;
+                height: 2px !important;
+                margin: 64px auto !important;
+                border: none !important;
+                width: 60% !important;
+                max-width: 400px !important;
+                display: block !important;
+                border-radius: 2px !important;
+            }
+
+            /* Modal melhorado */
+            #trader-voting-widget-root .tvw-modal {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                background: rgba(0, 0, 0, 0.85) !important;
+                backdrop-filter: blur(12px) !important;
+                -webkit-backdrop-filter: blur(12px) !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                z-index: 10000 !important;
+                padding: 20px !important;
+                margin: 0 !important;
+                border: none !important;
+                opacity: 0 !important;
+                transform: translateY(-30px) scale(0.95) !important;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            }
+
+            #trader-voting-widget-root .tvw-modal.tvw-modal-show {
+                opacity: 1 !important;
+                transform: translateY(0) scale(1) !important;
+            }
+
+            #trader-voting-widget-root .tvw-modal.tvw-modal-hide {
+                opacity: 0 !important;
+                transform: translateY(30px) scale(0.95) !important;
+                transition: all 0.3s ease-in !important;
+            }
+
+            #trader-voting-widget-root .tvw-modal.tvw-modal-hidden {
+                display: none !important;
+            }
+
+            #trader-voting-widget-root .tvw-modal-content {
+                background: rgba(15, 23, 42, 0.95) !important;
+                backdrop-filter: blur(24px) !important;
+                -webkit-backdrop-filter: blur(24px) !important;
+                border: 1px solid rgba(212, 175, 55, 0.3) !important;
+                border-radius: 24px !important;
+                padding: 40px 32px !important;
+                text-align: center !important;
+                box-shadow: 
+                    0 32px 64px rgba(0, 0, 0, 0.4),
+                    0 0 0 1px rgba(212, 175, 55, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+                max-width: 420px !important;
+                width: 100% !important;
+                margin: 0 !important;
+                position: relative !important;
+            }
+
+            #trader-voting-widget-root .tvw-modal-emoji {
+                font-size: 56px !important;
+                margin: 0 0 20px 0 !important;
+                padding: 0 !important;
+                display: block !important;
+                line-height: 1 !important;
+            }
+
+            #trader-voting-widget-root .tvw-modal-title {
+                font-size: 36px !important;
+                font-weight: 900 !important;
+                color: #d4af37 !important;
+                margin: 0 0 16px 0 !important;
+                padding: 0 !important;
+                display: block !important;
+                line-height: 1.2 !important;
+                letter-spacing: -0.5px !important;
+            }
+
+            #trader-voting-widget-root .tvw-modal-text {
+                color: #94a3b8 !important;
+                font-size: 18px !important;
+                margin: 0 0 32px 0 !important;
+                padding: 0 !important;
+                line-height: 1.6 !important;
+                display: block !important;
+                font-weight: 500 !important;
+            }
+
+            #trader-voting-widget-root .tvw-close-btn {
+                background: linear-gradient(135deg, #475569, #334155) !important;
+                color: #ffffff !important;
+                font-weight: 700 !important;
+                padding: 14px 28px !important;
+                border-radius: 12px !important;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                position: relative !important;
+                overflow: hidden !important;
+                cursor: pointer !important;
+                border: none !important;
+                outline: none !important;
+                margin: 0 !important;
+                display: inline-block !important;
+                text-align: center !important;
+                line-height: 1 !important;
+                font-size: 14px !important;
+                text-transform: uppercase !important;
+                letter-spacing: 0.5px !important;
+                box-shadow: 
+                    0 4px 16px rgba(71, 85, 105, 0.25),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+            }
+
+            #trader-voting-widget-root .tvw-close-btn:hover {
+                background: linear-gradient(135deg, #334155, #1e293b) !important;
+                transform: translateY(-2px) !important;
+                box-shadow: 
+                    0 8px 24px rgba(71, 85, 105, 0.4),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+            }
+
+            /* Responsive refinado */
+            @media (max-width: 640px) {
+                #trader-voting-widget-root .tvw-container {
+                    padding: 24px 16px !important;
+                }
+                
+                #trader-voting-widget-root .tvw-header {
+                    margin-bottom: 48px !important;
+                }
+                
+                #trader-voting-widget-root .tvw-section-title-container {
+                    margin-bottom: 32px !important;
+                }
+                
+                #trader-voting-widget-root .tvw-grid {
+                    grid-template-columns: 1fr !important;
+                    gap: 20px !important;
+                }
+                
+                #trader-voting-widget-root .tvw-card {
+                    max-width: 100% !important;
+                    min-height: 300px !important;
+                    padding: 28px 20px !important;
+                }
+
+                #trader-voting-widget-root .tvw-section {
+                    margin-bottom: 56px !important;
+                }
+
+                #trader-voting-widget-root .tvw-modal-content {
+                    padding: 32px 24px !important;
+                    margin: 16px !important;
+                }
+            }
+
+            @media (min-width: 641px) and (max-width: 1024px) {
+                #trader-voting-widget-root .tvw-grid {
+                    grid-template-columns: repeat(2, 1fr) !important;
+                    gap: 24px !important;
+                }
+            }
+
+            @media (min-width: 1025px) {
+                #trader-voting-widget-root .tvw-grid {
+                    grid-template-columns: repeat(4, 1fr) !important;
+                    max-width: 1200px !important;
+                    margin: 0 auto !important;
+                }
+            }
+        </style>
+
+        <div class="tvw-container">
+            <!-- Main Title -->
+            <header class="tvw-header">
+                <i class="fas fa-chart-line tvw-main-icon"></i>
+                <h1 class="tvw-title-main">
+                    VOTE NO SEU<br>
+                    <span class="tvw-title-gold">TRADER</span>
+                </h1>
+                <p class="tvw-subtitle">
+                    Escolha o participante que mais se destaca para continuar na competição
+                </p>
+                <div class="tvw-decorator">
+                    <div class="tvw-decorator-line"></div>
+                    <i class="fas fa-star tvw-decorator-icon"></i>
+                    <div class="tvw-decorator-line"></div>
+                </div>
+            </header>
+
+            <!-- Camarote Section -->
+            <section class="tvw-section" id="camarote">
+                <div class="tvw-section-title-container">
+                    <i class="fas fa-star tvw-section-top-icon"></i>
+                    <div class="tvw-section-title">
+                        <i class="fas fa-crown tvw-section-icon"></i>
+                        <span>CAMAROTE</span>
+                        <i class="fas fa-crown tvw-section-icon"></i>
+                    </div>
+                    <p class="tvw-section-subtitle">
+                        Os traders de elite da competição
+                    </p>
+                </div>
+                <div id="camarote-grid" class="tvw-grid">
+                    <!-- Camarote trader cards will be inserted here by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Section Divider -->
+            <div class="tvw-divider"></div>
+
+            <!-- Pipoca Section -->
+            <section class="tvw-section" id="pipoca">
+                <div class="tvw-section-title-container">
+                    <div class="tvw-section-title">
+                        <i class="fas fa-rocket tvw-section-icon"></i>
+                        <span>PIPOCA</span>
+                        <i class="fas fa-rocket tvw-section-icon"></i>
+                    </div>
+                    <p class="tvw-section-subtitle">
+                        Os desafiantes em busca da glória
+                    </p>
+                </div>
+                <div id="pipoca-grid" class="tvw-grid">
+                    <!-- Pipoca trader cards will be inserted here by JavaScript -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Thank You Modal -->
+        <div id="thank-you-modal" class="tvw-modal tvw-modal-hidden">
+            <div class="tvw-modal-content">
+                <div class="tvw-modal-emoji">🎉</div>
+                <h3 class="tvw-modal-title">Obrigado!</h3>
+                <p class="tvw-modal-text">
+                    Seu voto foi computado com sucesso.
+                </p>
+                <button id="close-modal-btn" class="tvw-close-btn">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Encapsulamento total para evitar conflitos
+        (function() {
+            'use strict';
+            
+            // Verificar se o widget existe
+            const widgetRoot = document.getElementById('trader-voting-widget-root');
+            if (!widgetRoot) return;
+
+            // --- DATA (sem a propriedade 'photo') ---
+            const camaroteTraders = [
+                { name: 'Ricardo "O Mago" F.', age: 42, country: 'Brasil', asset: 'S&P 500', community: 'Tribo' },
+                { name: 'Julia "Scalper" Chen', age: 35, country: 'Portugal', asset: 'EUR/USD', community: 'Latam' },
+                { name: 'Marcos "Rei do Ouro"', age: 51, country: 'Brasil', asset: 'Gold', community: 'Tribo' },
+                { name: 'Sofia Valenzuela', age: 38, country: 'Argentina', asset: 'NASDAQ', community: 'Latam' }
+            ];
+            
+            const pipocaTraders = [
+                { name: 'Lucas Almeida', age: 24, country: 'Brasil', asset: 'Bitcoin', community: 'Aldeia' },
+                { name: 'Beatriz Costa', age: 27, country: 'Brasil', asset: 'GBP/USD', community: 'Aldeia' },
+                { name: 'Carlos Mendoza', age: 29, country: 'Colômbia', asset: 'GBP/JPY', community: 'Latam' },
+                { name: 'Fernanda Lima', age: 22, country: 'Brasil', asset: 'Apple', community: 'Tribo' },
+                { name: 'Diego Santos', age: 31, country: 'Brasil', asset: 'USD/JPY', community: 'Aldeia' },
+                { name: 'Gabriela Nunes', age: 26, country: 'Portugal', asset: 'Ethereum', community: 'Latam' },
+                { name: 'Pedro Oliveira', age: 28, country: 'Brasil', asset: 'Tesla', community: 'Tribo' },
+                { name: 'Isabella Rossi', age: 25, country: 'Argentina', asset: 'AUD/USD', community: 'Latam' }
+            ];
+
+            // --- DOM ELEMENTS ---
+            const camaroteGrid = widgetRoot.querySelector('#camarote-grid');
+            const pipocaGrid = widgetRoot.querySelector('#pipoca-grid');
+            const modal = widgetRoot.querySelector('#thank-you-modal');
+            const closeModalBtn = widgetRoot.querySelector('#close-modal-btn');
+
+            // --- FUNCTIONS ---
+
+            /**
+             * Extrai as iniciais do nome do trader.
+             * Ex: "Ricardo "O Mago" F." se torna "RF".
+             * @param {string} name - O nome completo do trader.
+             * @returns {string} As iniciais.
+             */
+            function getInitials(name) {
+                if (!name) return '';
+                // Remove apelidos entre aspas e depois divide o nome
+                const cleanedName = name.replace(/"[^"]*"/g, '');
+                const parts = cleanedName.trim().split(' ').filter(p => p.length > 0);
+                
+                if (parts.length === 0) return '';
+                if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
+                
+                const firstInitial = parts[0].charAt(0);
+                const lastInitial = parts[parts.length - 1].charAt(0);
+                
+                return `${firstInitial}${lastInitial}`.toUpperCase();
+            }
+
+            function createTraderCard(trader) {
+                const badgeClass = {
+                    'Latam': 'tvw-badge-latam',
+                    'Tribo': 'tvw-badge-tribo', 
+                    'Aldeia': 'tvw-badge-aldeia'
+                }[trader.community] || 'tvw-badge-tribo';
+                
+                const initials = getInitials(trader.name);
+
+                return `
+                    <div class="tvw-card">
+                        <div class="tvw-card-content">
+                            <div class="tvw-initials-circle">${initials}</div>
+                            <h3 class="tvw-name">${trader.name}</h3>
+                            <p class="tvw-info">${trader.age} anos • ${trader.country} • ${trader.asset}</p>
+                            <div class="tvw-badge-container">
+                                <span class="tvw-badge ${badgeClass}">${trader.community.toUpperCase()}</span>
+                            </div>
+                        </div>
+                        <button class="tvw-vote-btn">
+                            <i class="fas fa-vote-yea tvw-icon"></i>VOTAR
+                        </button>
+                    </div>
+                `;
+            }
+
+            function renderCards() {
+                if (camaroteGrid) {
+                    camaroteGrid.innerHTML = camaroteTraders.map(trader => createTraderCard(trader)).join('');
+                }
+                if (pipocaGrid) {
+                    pipocaGrid.innerHTML = pipocaTraders.map(trader => createTraderCard(trader)).join('');
+                }
+            }
+
+            function showModal() {
+                if (!modal) return;
+                modal.classList.remove('tvw-modal-hidden');
+                modal.classList.remove('tvw-modal-hide');
+                setTimeout(() => {
+                    modal.classList.add('tvw-modal-show');
+                }, 10);
+            }
+
+            function hideModal() {
+                if (!modal) return;
+                modal.classList.remove('tvw-modal-show');
+                modal.classList.add('tvw-modal-hide');
+                setTimeout(() => {
+                    modal.classList.add('tvw-modal-hidden');
+                    modal.classList.remove('tvw-modal-hide');
+                }, 300);
+            }
+
+            // --- EVENT LISTENERS ---
+            if (widgetRoot) {
+                widgetRoot.addEventListener('click', function(event) {
+                    if (event.target.closest('.tvw-vote-btn')) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        showModal();
+                    }
+                });
+            }
+
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    hideModal();
+                });
+            }
+
+            if (modal) {
+                modal.addEventListener('click', function(event) {
+                    if (event.target === modal) {
+                        hideModal();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal && !modal.classList.contains('tvw-modal-hidden')) {
+                    hideModal();
+                }
+            });
+
+            // --- INITIALIZATION ---
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', renderCards);
+            } else {
+                renderCards();
+            }
+        })();
+    </script>
+</body>
+</html>
